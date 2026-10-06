@@ -1,6 +1,7 @@
 import pretty_midi
 pretty_midi.pretty_midi.MAX_TICK = 1e10
 from pathlib import Path
+from representation import intervals
 
 # Paths
 NES_DIR = "data/nesmdb_midi"
@@ -81,3 +82,47 @@ def vertical_intervals(melody, bass):
         v.append(interval)
 
     return v
+
+def list_files(folder, split):
+    """Return the sorted list of .mid paths in folder/split."""
+
+    split_dir = Path(folder) / split
+    files = split_dir.glob("*.mid")
+
+    return sorted(files)
+
+def build_corpus(folder, split):
+    """Return a sequende melody and the vertical sequence."""
+
+    melody_seqs = []
+    vertical_seqs = []
+    read = 0
+    failed = 0
+    short = 0
+    no_bass = 0
+
+    for path in list_files(folder, split):
+        try:
+            voices = load(path)
+        except Exception:
+            failed += 1
+            continue
+        read += 1
+
+        melody = melody_voice(voices)
+        if len(melody) < 32:
+            short += 1
+            continue
+
+        pitches = []
+        for note in melody:
+            pitches.append(note[2])
+        melody_seqs.append(intervals(pitches))
+
+        if 'tr' in voices and voices['tr']:
+            vertical_seqs.append(vertical_intervals(melody, voices['tr']))
+        else:
+            no_bass += 1
+
+    print("read:", read, "failed:", failed, "short:", short, "no_bass:", no_bass)
+    return melody_seqs, vertical_seqs
