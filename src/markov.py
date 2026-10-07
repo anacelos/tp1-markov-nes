@@ -84,5 +84,6 @@ def sample(dist, random_numb):
 
     states = list(dist.keys())
     probability = list(dist.values())
+    index = random_numb.choice(len(states), p = probability)
 
-    return random_numb.choice(states, p = probability)
+    return states[index]
