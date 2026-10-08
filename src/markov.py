@@ -62,7 +62,7 @@ def mix(dist_a, dist_b, lambd):
 
 def constrain(dist, allowed):
     """
-    RReturn dist restricted to the allowed states and renormalized to 
+    Return dist restricted to the allowed states and renormalized to 
     sum 1, or {} if no allowed state has probability.
     """
 
