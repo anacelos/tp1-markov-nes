@@ -1,5 +1,7 @@
+from representation import is_consonant
 
-
+# Functions
+# ----------------------------------------------------------------------
 
 def interval_histogram(sequences):
     """
@@ -43,3 +45,20 @@ def japaneseness(h, h_nes, h_js):
     d_js = tv_distance(h, h_js)
 
     return d_nes / (d_nes + d_js)
+
+def coherence(vertical):
+    """
+    Return the fraction of vertical intervals (melody - bass) that are 
+    consonant.
+    """
+
+    if len(vertical) == 0:
+        return 0
+    count = 0
+    for each_v in vertical:
+        if is_consonant(each_v):
+            count += 1
+
+    return count / len(vertical)
+    
+    
