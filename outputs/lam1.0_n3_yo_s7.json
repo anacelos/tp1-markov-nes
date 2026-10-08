@@ -1,0 +1,19 @@
+{
+  "order": 3,
+  "tonic": 62,
+  "scale": "yo",
+  "melody_range": [
+    60,
+    84
+  ],
+  "bass_range": [
+    36,
+    60
+  ],
+  "bass_order": 2,
+  "bars_per_section": 4,
+  "bpm": 120,
+  "seed": 7,
+  "form": "AABA",
+  "lambd": 1.0
+}
