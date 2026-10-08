@@ -3,6 +3,7 @@ Blá
 """ 
 
 import numpy as np
+import math
 
 # Functions
 # ----------------------------------------------------------------------
@@ -87,3 +88,35 @@ def sample(dist, random_numb):
     index = random_numb.choice(len(states), p = probability)
 
     return states[index]
+
+def log_prob(model, history, state, order, k = 0.1, vocab = 25):
+    """
+    Return ln P(state | last order states) with add-k smoothing over a 
+    vocabulary of vocab states.
+    """
+
+    if len(history) >= order: 
+        context = tuple(history[len(history) - order:])
+    else:
+        context = tuple(history)
+    counts = model.get(context, {})
+    c = counts.get(state, 0)
+    total = sum(counts.values())
+
+    return math.log((c + k) / (total + k * vocab))
+
+def perplexity(model, sequences, order, k = 0.1):
+    """
+    Return exp(-mean log-probability) of all states in sequences: lower 
+    means better prediction.
+    """
+
+    sume = 0
+    n = 0
+    for each_seq in sequences:
+        for each_i in range(len(each_seq)):
+            sume += log_prob(model, each_seq[:each_i], each_seq[each_i], order, 
+                             k)
+            n += 1
+
+    return math.exp(-sume / n)
