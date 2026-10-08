@@ -62,6 +62,8 @@ for each_lambda in [0.0, 0.25, 0.5, 0.75, 1.0]:
     coh_val = [] 
     copy_nes = [] 
     copy_js = []
+    rep = []
+    size = []
 
     for each_seed in range(1, 11):
         song_config["seed"] = each_seed
@@ -70,14 +72,18 @@ for each_lambda in [0.0, 0.25, 0.5, 0.75, 1.0]:
         for note in song["melody"]:
             pitches.append(note[2])
         ivs = intervals(pitches)
-        j_val.append(japaneseness(interval_histogram([ivs]), h_nes, h_js))
+        h = interval_histogram([ivs])
+        rep.append(h.get(0, 0))
+        size.append(np.mean(np.abs(ivs)))
+        j_val.append(japaneseness(h, h_nes, h_js))
         coh_val.append(coherence(vertical_intervals(song["melody"], song["bass"])))
         copy_nes.append(longest_copy(ivs, nesmdb_text))
         copy_js.append(longest_copy(ivs, js_text))
     print(f"lambda = {each_lambda:.2f}: J = {np.mean(j_val):.2f} ± "
           f"{np.std(j_val):.2f}, coherence = {np.mean(coh_val):.2f} ± "
           f"{np.std(coh_val):.2f}, copy NES = {np.mean(copy_nes):.1f}, copy "
-          f"JS = {np.mean(copy_js):.1f}")
+          f"JS = {np.mean(copy_js):.1f}, rep = {np.mean(rep):.2f}, "
+          f"|int| = {np.mean(size):.2f}")
 print("\nE2 reference: coherence of real NES test songs")
 all_v = []
 for seq in data["vert_test"]:
