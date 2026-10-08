@@ -120,3 +120,44 @@ def perplexity(model, sequences, order, k = 0.1):
             n += 1
 
     return math.exp(-sume / n)
+
+def to_text(seq):
+    """
+    Return the sequence as text, one character per interval.
+    """
+
+    text = ""
+    for each_x in seq:
+        text += chr(100 + each_x)
+    return text
+
+def corpus_text(corpus):
+    """
+    Return all sequences as one text, separated by '|' so no segment 
+    crosses two songs.
+    """
+
+    text = []
+    for each_s in corpus:
+        text.append(to_text(each_s))
+
+    return "|".join(text)
+
+def longest_copy(seq, corpus_txt):
+    """
+    Return the biggest for the copy.
+    """
+
+    s = to_text(seq)
+    best = 0
+    for each_L in range(1, len(s) + 1):
+        found = False
+        for each_i in range(len(s) - each_L + 1):
+            if s[each_i:each_i + each_L] in corpus_txt:
+                found = True
+                break
+        if not found: 
+            break
+        best = each_L
+    return best
+
