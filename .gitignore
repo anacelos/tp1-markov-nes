@@ -1,5 +1,6 @@
 .venv/
 data/
-__pycache__/outputs/candidates/
+__pycache__/
+outputs/candidates/
 outputs/teste.*
 cache/
