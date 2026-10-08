@@ -3,14 +3,20 @@ import jsmel_data
 from markov import train
 from generate import generate_song
 from midi_export import to_midi, save
+import pickle
 
 # Real Data
 # ----------------------------------------------------------------------
 mel, vert = nesmdb_data.build_corpus(nesmdb_data.NES_DIR, 'train')
 if not mel:
-    raise SystemError("No NES file found. run from the repository root")
+    raise SystemExit("No NES file found. run from the repository root")
+mel_test, vert_test = nesmdb_data.build_corpus(nesmdb_data.NES_DIR, 'test')
 meta = jsmel_data.read_metadata(jsmel_data.META_PATH)
 js = jsmel_data.build_corpus(jsmel_data.JSMEL_DIR, meta)
+
+with open("cache/corpora.pkl", "wb") as f:
+    pickle.dump({'mel': mel, 'vert': vert, 'js': js,
+             'mel_test': mel_test, 'vert_test': vert_test}, f)
 
 # Chains
 # ---------------------------------------------------------------------- 
