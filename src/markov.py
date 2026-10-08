@@ -145,7 +145,8 @@ def corpus_text(corpus):
 
 def longest_copy(seq, corpus_txt):
     """
-    Return the biggest for the copy.
+    Return the length of the longest contiguous segment of seq that also 
+    appears in corpus_txt.
     """
 
     s = to_text(seq)
