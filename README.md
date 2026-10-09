@@ -209,7 +209,7 @@ Full AABA songs, 10 seeds per λ; mean ± standard deviation.
     - **Auxiliary Scripts and Git:** Suggestion of Git commands (executed by me) and writing of short exploration snippets in the Python terminal (>>>), used to test data, inspect melodies, and generate local `.wav` files.
     - **Documentation:** Assembly of the file and result table structures here in the README, as well as text review.
     - **Translation:** translating texts into English. (Gemini)
-    - **Extra explanations:** additional explanations of certain functions and concepts, with more examples and applications. (Gemini)
+    - **Extra explanations:** Additional explanations of certain functions and concepts, with more examples and applications. (Gemini)
     - The AI also helped with formatting daily personal study reports.
 
 3. What the AI did not do
