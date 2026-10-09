@@ -1,4 +1,4 @@
-# tp1-markov-nes
+# Conditioned Markov Chains for Polyphonic Japanese Chiptune
 
 This repository is a project developed for a postgraduate course at UFMG 
 (course: DCC831 - Generative AI for Music). It implements a polyphonic 
