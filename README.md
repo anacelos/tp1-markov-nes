@@ -152,7 +152,7 @@ The λ and the seed of each song are also stored in its `.json`.
 |`outputs/lam1.0_n3_yo_s7.{mid,json,wav}`|	1.0|	7|	JSMel only|
 |`outputs/lam1.0_n3_yo_s10.{mid,json,wav}`|	1.0	|10	|JSMel only|
 
-What can be heard, based on E2: with λ = 0 the melody leaps more, while with λ = 1 it moves note by note and repeats more notes — the mean interval falls from 4.2 semitones (λ = 0) to 1.5 (λ = 1), and repeated notes rise from 27% to 45%.
+What can be heard, based on E2: with λ = 0 the melody leaps more, while with λ = 1 it moves note by note and repeats more notes, the mean interval falls from 4.2 semitones (λ = 0) to 1.5 (λ = 1), and repeated notes rise from 27% to 45%.
 
 ## 5. Results
 
