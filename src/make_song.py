@@ -1,8 +1,10 @@
 import nesmdb_data 
 import jsmel_data
+
+from midi_export import to_midi, save
 from markov import train
 from generate import generate_song
-from midi_export import to_midi, save
+from synthesis import render, save_wav
 import pickle
 
 # Real Data
@@ -38,5 +40,8 @@ for each_lambda in [1.0, 0.5, 0.0]:
         config['seed'] = each_seed
         song = generate_song(models, model_v, config)
         name = f"outputs/candidates/lam{each_lambda}_n3_yo_s{each_seed}"
-        save(to_midi(song, config), config, name)
+        p_m = to_midi(song, config)
+        save(p_m, config, name)
+        save_wav(render(p_m), name + ".wav")
+        
         print("saved:", name)
