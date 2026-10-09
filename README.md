@@ -10,7 +10,7 @@ are fixed. The stylistic constraint is Japanese 8-bit chiptune: AABA
 form, with 16 measures, 4/4 time, a yo pentatonic scale on D, and NES 
 timbres (pulse for the melody and triangle for the bass).
 
-## What is in this repository
+## What is in this Repository
 
 | Path | Content |
 |------|---------|
@@ -95,7 +95,7 @@ unzip ~/Downloads/20078158.zip -d ~/Downloads/jsmel_raw
 for f in ~/Downloads/jsmel_raw/*.zip; do unzip -q "$f" -d data/jsmel/; done
 cp ~/Downloads/jsmel_raw/Metadata_JSMel.xlsx data/jsmel/
 ```
-### 2.3 Check the data 
+### 2.3 Check the Data 
 ```bash
 find data/nesmdb_midi -name "*.mid" | wc -l     # expected: 5278
 find data/jsmel -name "P_*.txt" | wc -l         # expected: 545
@@ -116,7 +116,7 @@ data/
 YM2413-MDB was part of the original plan but is not used in this version, since the rhythm is fixed.
 
 
-## 3. Reproducing the results
+## 3. Reproducing the Results
 
 Always run the commands from the repository root.
 
@@ -138,7 +138,7 @@ It requires the cache (run step 1 first).
 
 Every song is reproducible: the same configuration and seed (stored in its `.json`) produce the same song.
 
-## 4. Delivered songs
+## 4. Delivered Songs
 
 The six songs were chosen by ear among the 10 seeds of each λ. All of them share the same setup: n = 3, yo scale on D, AABA form, 16 bars, 120 BPM.
 The λ and the seed of each song are also stored in its `.json`.
